@@ -4,8 +4,13 @@ import com.forohub.foro_api.domain.model.curso.CursoRepository;
 import com.forohub.foro_api.domain.model.usuario.Usuario;
 import com.forohub.foro_api.domain.model.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class TopicoService {
@@ -27,4 +32,12 @@ public class TopicoService {
         var topico = new Topico(datos, autor, curso);
         return topicoRepository.save(topico);
     }
+
+
+    public Page<DatosListaTopicos> listar(Pageable paginacion){
+        return topicoRepository.findAll(paginacion)
+                .map(DatosListaTopicos::new);
+    }
+
+
 }

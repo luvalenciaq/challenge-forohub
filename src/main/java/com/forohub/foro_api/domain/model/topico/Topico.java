@@ -34,7 +34,8 @@ public class Topico {
     @Column(name = "status")
     private EstadoTopico estado = EstadoTopico.NO_RESPONDIDO;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "autor_id")
     private Usuario autor;
     @ManyToOne
     private Curso curso;

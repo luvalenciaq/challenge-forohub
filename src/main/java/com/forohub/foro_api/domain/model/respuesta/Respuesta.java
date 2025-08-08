@@ -1,5 +1,6 @@
 package com.forohub.foro_api.domain.model.respuesta;
 
+import com.forohub.foro_api.domain.model.topico.DatosActualizarTopico;
 import com.forohub.foro_api.domain.model.topico.Topico;
 import com.forohub.foro_api.domain.model.usuario.Usuario;
 import jakarta.persistence.*;
@@ -29,4 +30,11 @@ public class Respuesta {
     @ManyToOne
     private Usuario autor;
     private Boolean solucion = false;
+
+
+    public void actualizar(DatosRegistroRespuesta datos) {
+        if (datos.mensaje() != null) {
+            this.mensaje = datos.mensaje();
+        }
+    }
 }

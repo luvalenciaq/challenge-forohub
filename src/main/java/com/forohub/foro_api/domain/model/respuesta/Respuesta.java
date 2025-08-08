@@ -1,4 +1,4 @@
-package com.forohub.foro_api.domain.model;
+package com.forohub.foro_api.domain.model.respuesta;
 
 import com.forohub.foro_api.domain.model.topico.Topico;
 import com.forohub.foro_api.domain.model.usuario.Usuario;

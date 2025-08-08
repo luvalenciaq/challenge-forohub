@@ -1,10 +1,9 @@
 package com.forohub.foro_api.domain.model.topico;
 
 import com.forohub.foro_api.domain.model.curso.Curso;
-import com.forohub.foro_api.domain.model.Respuesta;
+import com.forohub.foro_api.domain.model.respuesta.Respuesta;
 import com.forohub.foro_api.domain.model.usuario.Usuario;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

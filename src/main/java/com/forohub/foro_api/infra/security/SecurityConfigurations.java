@@ -15,13 +15,13 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity //para decirle que va a modificar las configuracions de spring security
+@EnableWebSecurity
 public class SecurityConfigurations {
 
     @Autowired
     private SecurityFilter securityFilter;
 
-    @Bean //para que spring reconozca que esa clase tiene que ser cargada y esta disponible para que se pueda leer
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return  http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -30,8 +30,6 @@ public class SecurityConfigurations {
                             //Esto es para la documentacion de la api
                             .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**")
                             .permitAll()
-                            //req.requestMatchers(HttpMethod.DELETE, "/medicos").hasRole("ADMIN"); //solo admin puede borrar
-                            //req.requestMatchers(HttpMethod.DELETE, "/pacientes").hasRole("ADMIN"); //solo admin puede borrar
                             .anyRequest()
                             .authenticated();
                 })

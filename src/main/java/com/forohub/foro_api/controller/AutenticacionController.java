@@ -19,17 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class AutenticacionController {
 
     @Autowired
-    private AuthenticationManager manager;//instancia de una clase que podemos usar para realizar el servicio de llamar al metodo del service
+    private AuthenticationManager manager;
 
     @Autowired
-    private TokenService tokenService;  //tiene que ser el de infra.security
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity iniciarSesion(@RequestBody @Valid DatosAutenticacion datos) {
-        var authenticationToken = new UsernamePasswordAuthenticationToken(datos.correoElectronico(), datos.contrasena()); //Este es para autenticar
-        var autenticacion = manager.authenticate(authenticationToken); //el token son los datos del usuario en un formato especifico
+        var authenticationToken = new UsernamePasswordAuthenticationToken(datos.correoElectronico(), datos.contrasena());
+        var autenticacion = manager.authenticate(authenticationToken);
 
-        var  tokenJWT = tokenService.generarToken((Usuario) autenticacion.getPrincipal()); //este token es el que devuelve
+        var  tokenJWT = tokenService.generarToken((Usuario) autenticacion.getPrincipal());
         return ResponseEntity.ok(new DatosTokenJWT(tokenJWT));
     }
 }

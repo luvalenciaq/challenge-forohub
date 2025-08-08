@@ -22,12 +22,11 @@ public class TokenService {
     public String generarToken(Usuario usuario){
         try {
             var algoritmo = Algorithm.HMAC256(secret);
-            return  JWT.create() //creacion
-                    .withIssuer("API Foro-api") //esto lo que hace es decir cual es el servidor que lo firma
-                    .withSubject(usuario.getCorreoElectronico()) //decir quien se loggeo
-                    .withExpiresAt(fechaExpiracion())//fecha de expiracion
-                    //  .withClaim() para llaves valor
-                    .sign(algoritmo); //pasa el algoritmo para firmar el token
+            return  JWT.create()
+                    .withIssuer("API Foro-api")
+                    .withSubject(usuario.getCorreoElectronico())
+                    .withExpiresAt(fechaExpiracion())
+                    .sign(algoritmo);
         } catch (JWTCreationException exception){
             throw new RuntimeException("Error al generar el token JWT", exception);
         }

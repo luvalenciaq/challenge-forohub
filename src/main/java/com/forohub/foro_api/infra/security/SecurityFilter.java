@@ -27,22 +27,20 @@ public class SecurityFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         var tokenJWT = recuperarToken(request);
         if (tokenJWT != null) {
-            var subject = tokenService.getSubject(tokenJWT); //Asi se obtiene el subject /user que se está logeando
+            var subject = tokenService.getSubject(tokenJWT);
             var usuario = repository.findByCorreoElectronico(subject);
-            var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities()); //DTO de spring
-            //asi le decimos a spring que ese usuario está loggeado
+            var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
-        filterChain.doFilter(request, response); //para continuar la cadena de filtros
-
-    } //no se usa Filter sino una clase abstracta que usa el FILTER y es de spring
+        filterChain.doFilter(request, response);
+    }
 
     private String recuperarToken(HttpServletRequest request) {
         var authorizationHeader = request.getHeader("Authorization");
         if (authorizationHeader != null){
-            return authorizationHeader.replace("Bearer ", ""); // hay que eliminar el bearer que sale al lado del token
+            return authorizationHeader.replace("Bearer ", "");
         }
         return null;
     }

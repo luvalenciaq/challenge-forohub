@@ -54,7 +54,7 @@ public class Topico {
         this.curso = curso;
     }
 
-    public void actualizar(@Valid DatosActualizarTopico datos) {
+    public void actualizar(DatosActualizarTopico datos) {
         if (datos.titulo() != null) {
             this.titulo = datos.titulo();
         }

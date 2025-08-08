@@ -10,6 +10,7 @@ public record DatosListaTopicos(
         String mensaje,
         String estado,
         String autor,
+        String curso,
         LocalDateTime fechaDeCreacion
 ) {
     public DatosListaTopicos(Topico topico){
@@ -19,6 +20,7 @@ public record DatosListaTopicos(
                 topico.getMensaje(),
                 topico.getEstado().toString(),
                 topico.getAutor().getNombre(),
+                topico.getCurso().getNombre(),
                 topico.getFechaDeCreacion());
     }
 }

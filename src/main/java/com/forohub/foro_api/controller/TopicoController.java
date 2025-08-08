@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,16 +26,31 @@ public class TopicoController {
         return ResponseEntity.ok(datosRespuesta);
     }
 
-    @PutMapping
-    public ResponseEntity actualizar(@RequestBody DatosActualizarTopico datos){
-        var topicoActualizado = topicoService.actualizar(datos);
+    @PutMapping("/{id}")
+    public ResponseEntity actualizar(@PathVariable Long id, @RequestBody @Valid DatosActualizarTopico datos){
+        var topicoActualizado = topicoService.actualizar(id, datos);
         return ResponseEntity.ok(topicoActualizado);
     }
 
     @GetMapping
-    public ResponseEntity<Page<DatosListaTopicos>> listar(@PageableDefault(size = 10, sort = {"fechaDeCreacion"}) Pageable paginacion){
+    public ResponseEntity<Page<DatosListaTopicos>> listar(@PageableDefault(size = 10,
+            sort = "fechaDeCreacion", direction = Sort.Direction.ASC) Pageable paginacion){
         var page = topicoService.listar(paginacion);
         return ResponseEntity.ok(page);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity eliminar(@PathVariable Long id){
+        topicoService.eliminar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosDetalleTopico> detallar(@PathVariable Long id){
+        var detalle = topicoService.detallar(id);
+        return ResponseEntity.ok(detalle);
+    }
+
+
 
 }

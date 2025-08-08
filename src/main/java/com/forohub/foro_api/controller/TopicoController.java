@@ -25,6 +25,12 @@ public class TopicoController {
         return ResponseEntity.ok(datosRespuesta);
     }
 
+    @PutMapping
+    public ResponseEntity actualizar(@RequestBody DatosActualizarTopico datos){
+        var topicoActualizado = topicoService.actualizar(datos);
+        return ResponseEntity.ok(topicoActualizado);
+    }
+
     @GetMapping
     public ResponseEntity<Page<DatosListaTopicos>> listar(@PageableDefault(size = 10, sort = {"fechaDeCreacion"}) Pageable paginacion){
         var page = topicoService.listar(paginacion);

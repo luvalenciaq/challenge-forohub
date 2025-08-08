@@ -3,12 +3,15 @@ package com.forohub.foro_api.domain.model.topico;
 import com.forohub.foro_api.domain.model.curso.CursoRepository;
 import com.forohub.foro_api.domain.model.usuario.Usuario;
 import com.forohub.foro_api.domain.model.usuario.UsuarioRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -34,10 +37,16 @@ public class TopicoService {
     }
 
 
-    public Page<DatosListaTopicos> listar(Pageable paginacion){
+    public Page<DatosListaTopicos> listar(Pageable paginacion) {
         return topicoRepository.findAll(paginacion)
                 .map(DatosListaTopicos::new);
     }
 
+    @Transactional
+    public DatosDetalleTopico actualizar(@RequestBody @Valid DatosActualizarTopico datos){
+        var topico = topicoRepository.getReferenceById(datos.id());
+        topico.actualizar(datos);
+        return new DatosDetalleTopico(topico);
+    }
 
 }

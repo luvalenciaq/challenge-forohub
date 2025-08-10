@@ -2,6 +2,8 @@ package com.forohub.foro_api.domain.model.topico;
 
 import com.forohub.foro_api.domain.model.curso.Curso;
 import com.forohub.foro_api.domain.model.respuesta.Respuesta;
+import com.forohub.foro_api.domain.model.topico.dto.DatosActualizarTopico;
+import com.forohub.foro_api.domain.model.topico.dto.DatosRegistroTopico;
 import com.forohub.foro_api.domain.model.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -45,7 +47,6 @@ public class Topico {
     public Topico(DatosRegistroTopico datos) {
     }
 
-    //si no hago la asignacion al intentar hacer la insercion en la tabla, quedan null
     public Topico(DatosRegistroTopico datos, Usuario autor, Curso curso) {
         this.titulo = datos.titulo();
         this.mensaje = datos.mensaje();

@@ -1,6 +1,6 @@
 package com.forohub.foro_api.domain.model.respuesta;
 
-import com.forohub.foro_api.domain.model.topico.DatosActualizarTopico;
+import com.forohub.foro_api.domain.model.respuesta.dto.DatosRegistroRespuesta;
 import com.forohub.foro_api.domain.model.topico.Topico;
 import com.forohub.foro_api.domain.model.usuario.Usuario;
 import jakarta.persistence.*;
@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-
 
 @Entity(name = "Respuesta")
 @Table(name= "respuestas")
@@ -37,4 +36,10 @@ public class Respuesta {
             this.mensaje = datos.mensaje();
         }
     }
+
+    public void setSolucion(boolean solucion) {
+        this.solucion = solucion;
+    }
+
+
 }

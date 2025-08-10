@@ -1,6 +1,10 @@
 package com.forohub.foro_api.controller;
 
 import com.forohub.foro_api.domain.model.topico.*;
+import com.forohub.foro_api.domain.model.topico.dto.DatosActualizarTopico;
+import com.forohub.foro_api.domain.model.topico.dto.DatosDetalleTopico;
+import com.forohub.foro_api.domain.model.topico.dto.DatosListaTopicos;
+import com.forohub.foro_api.domain.model.topico.dto.DatosRegistroTopico;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

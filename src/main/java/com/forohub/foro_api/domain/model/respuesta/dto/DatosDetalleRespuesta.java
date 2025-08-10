@@ -1,4 +1,6 @@
-package com.forohub.foro_api.domain.model.respuesta;
+package com.forohub.foro_api.domain.model.respuesta.dto;
+
+import com.forohub.foro_api.domain.model.respuesta.Respuesta;
 
 import java.time.LocalDateTime;
 

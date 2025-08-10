@@ -1,6 +1,6 @@
-package com.forohub.foro_api.domain.model.topico;
+package com.forohub.foro_api.domain.model.topico.dto;
 
-import com.forohub.foro_api.domain.model.usuario.Usuario;
+import com.forohub.foro_api.domain.model.topico.Topico;
 
 import java.time.LocalDateTime;
 

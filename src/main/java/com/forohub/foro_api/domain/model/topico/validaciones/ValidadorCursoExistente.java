@@ -2,7 +2,7 @@ package com.forohub.foro_api.domain.model.topico.validaciones;
 
 import com.forohub.foro_api.domain.ValidacionException;
 import com.forohub.foro_api.domain.model.curso.CursoRepository;
-import com.forohub.foro_api.domain.model.topico.DatosRegistroTopico;
+import com.forohub.foro_api.domain.model.topico.dto.DatosRegistroTopico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

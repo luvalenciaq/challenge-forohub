@@ -21,7 +21,7 @@ El objetivo es replicar, a nivel **back-end**, la funcionalidad de un foro para 
 - **GET** `/respuestas/{id}` → Mostrar una respuesta específica.
 - **PUT** `/respuestas/{id}` → Actualizar respuesta *(solo el autor)*.
 - **DELETE** `/respuestas/{id}` → Eliminar respuesta *(solo el autor)*.
-- **PATCH** `/respuestas/{id}/solucion` → Marcar o desmarcar como solución *(solo el autor del tópico)*.
+- **PUT** `/respuestas/{id}/solucion` → Marcar o desmarcar como solución *(solo el autor del tópico)*.
 
 ---
 
